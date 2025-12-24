@@ -34,7 +34,7 @@
         border: 0px;
       }
 
-      body{
+      body {
         background-color: var(--dark-purple);
         color: white;
         font-family: "Poppins", sans-serif;
@@ -43,11 +43,11 @@
         font-size: 20px;
         font-style: normal;
       }
-      
+
       html {
         scroll-behavior: smooth;
       }
-      header{
+      header {
         display: flex;
         position: sticky;
         z-index: 1000;
@@ -84,11 +84,11 @@
         color: white;
       }
 
-      .navbar a:hover{
+      .navbar a:hover {
         color: var(--light-purple);
         transition: color 0.2s ease-in-out;
       }
-      .social-icons{
+      .social-icons {
         display: flex;
         gap: 18px;
         align-items: center;
@@ -98,11 +98,55 @@
         font-size: 18px;
         color: white;
       }
-      .social-icons a:hover{
+      .social-icons a:hover {
         color: var(--light-purple);
         transition: color 0.2s ease-in-out;
       }
 
+      #home {
+        position: relative;
+        top: 20px;
+        /* border: 2px solid red; */
+        height: 400px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .home-box {
+        position: relative;
+        /* border: 2px solid white; */
+        text-align: center;
+      }
+
+      .intro {
+        font-size: 50px;
+        font-weight: 500;
+      }
+
+      .tag {
+        font-weight: 300;
+        position: relative;
+        top: 10px;
+        font-size: 25px;
+      }
+
+      .purple {
+        color: var(--light-purple);
+      }
+      .purple-cursor {
+        color: var(--light-purple);
+      }
+
+      #network {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1; /* stays behind content */
+        background: var(--dark-purple);
+      }
     </style>
   </head>
   <body>
@@ -150,5 +194,100 @@
         </div>
       </div>
     </header>
+
+    <canvas id="network"></canvas>
+
+    <section id="home">
+      <div class="home-box">
+        <div class="intro">
+          <span id="element"></span>
+        </div>
+        <div class="tag">part-time coder, full-time overthinker</div>
+      </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+    <!-- Setup and start animation! -->
+    <script>
+      var typed = new Typed("#element", {
+        strings: ["hi, it's <span class='purple'>mahima.</span>"],
+        typeSpeed: 50,
+        showCursor: true,
+        cursorChar: '<span class="purple-cursor">|</span>',
+      });
+
+      const canvas = document.getElementById("network");
+      const ctx = canvas.getContext("2d");
+
+      let width, height;
+      function resize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      }
+      window.addEventListener("resize", resize);
+      resize();
+
+      // code for the live network
+
+      const nodes = [];
+      const NODE_COUNT = 60;
+      const MAX_DISTANCE = 120;
+
+      for (let i = 0; i < NODE_COUNT; i++) {
+        nodes.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.4,
+          vy: (Math.random() - 0.5) * 0.4,
+        });
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, width, height);
+
+        // Draw connections
+        for (let i = 0; i < nodes.length; i++) {
+          for (let j = i + 1; j < nodes.length; j++) {
+            const dx = nodes[i].x - nodes[j].x;
+            const dy = nodes[i].y - nodes[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < MAX_DISTANCE) {
+              ctx.strokeStyle = `rgba(164, 93, 231, ${
+                1 - dist / MAX_DISTANCE
+              })`;
+              ctx.lineWidth = 0.7;
+              ctx.beginPath();
+              ctx.moveTo(nodes[i].x, nodes[i].y);
+              ctx.lineTo(nodes[j].x, nodes[j].y);
+              ctx.stroke();
+            }
+          }
+        }
+
+        // Draw nodes
+        for (const node of nodes) {
+          ctx.fillStyle = "#ffffff";
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, 2, 0, Math.PI * 2);
+          ctx.fill();
+
+          node.x += node.vx;
+          node.y += node.vy;
+
+          if (node.x < 0 || node.x > width) node.vx *= -1;
+          if (node.y < 0 || node.y > height) node.vy *= -1;
+        }
+
+        requestAnimationFrame(draw);
+      }
+
+      draw();
+    </script>
   </body>
 </html>
