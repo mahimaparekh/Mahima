@@ -1,18 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mahima</title>
-    <!-- link for the font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-
-    <!-- link for the icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -47,6 +44,7 @@
       html {
         scroll-behavior: smooth;
       }
+
       header {
         display: flex;
         position: sticky;
@@ -56,6 +54,7 @@
         justify-content: space-evenly;
         align-items: center;
         background-color: var(--dark-purple);
+        border-bottom: 1px solid rgba(164, 93, 231, 0.25);
       }
 
       .navbar {
@@ -85,17 +84,16 @@
         color: white;
         padding: 2px;
       }
-
       .navbar a:hover {
         color: var(--light-purple);
         transition: color 0.2s ease-in-out;
       }
+
       .social-icons {
         display: flex;
         gap: 18px;
         align-items: center;
       }
-
       .social-icons a {
         font-size: 18px;
         color: white;
@@ -106,18 +104,26 @@
         transition: color 0.2s ease-in-out;
       }
 
+      /* ── HOME SECTION ── */
       #home {
         position: relative;
-        height: 550px;
+        height: 400px;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
+        padding: 0 150px;
         overflow: hidden;
+        margin-bottom: 100px;
+        margin-top: 50px;
       }
+
       .home-box {
         position: relative;
-        text-align: center;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
       }
 
       .intro {
@@ -125,13 +131,58 @@
         font-weight: 500;
       }
 
-      .tag {
-        font-weight: 300;
-        position: relative;
-        top: 0px;
-        font-size: 28px;
-        color: var(--gray);
+      .tag1 {
+        color: var(--light-purple);
+        font-size: 25px;
       }
+
+      .tag2 {
+        line-height: 26px;
+        font-weight: 300;
+        font-size: 16px;
+        color: var(--gray);
+        margin-right: 150px;
+      }
+
+      .connect-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  width: fit-content;
+  margin-top: 12px;
+
+  padding: 12px 22px;
+  border-radius: 7px;
+
+  background: rgba(164, 93, 231, 0.12);
+  border: 1px solid rgba(164, 93, 231, 0.35);
+
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 400;
+
+  transition: all 0.25s ease;
+}
+
+.connect-btn i {
+  color: var(--light-purple);
+  font-size: 15px;
+}
+
+.connect-btn:hover {
+  background: rgba(164, 93, 231, 0.2);
+  border-color: var(--light-purple);
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 0 20px rgba(164, 93, 231, 0.18);
+}
+
+.connect-btn:active {
+  transform: translateY(0);
+}
 
       .purple {
         color: var(--light-purple);
@@ -140,61 +191,68 @@
         color: var(--light-purple);
       }
 
+      /* ── SPHERE WRAPPER ── */
+      .sphere-wrap {
+        position: relative;
+        width: 300px;
+        height: 300px;
+        flex-shrink: 0;
+      }
+
       #network {
         position: absolute;
         top: 0;
         left: 0;
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        height: 550px;
-        z-index: -10; /* stays behind content */
-        background: var(--dark-purple);
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        cursor: crosshair;
+        /* box-shadow:
+          0 0 0 1.5px rgba(164, 93, 231, 0.1),
+          0 0 18px rgba(164, 93, 231, 0.05); */
       }
 
+      /* ── ABOUT ── */
       #about {
         position: relative;
         height: 400px;
         display: flex;
         flex-direction: column;
         margin: 0px 150px;
-
+        margin-bottom: 100px;
       }
-      .about-container{
+      .about-container {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
       }
       .about-heading {
-        font-size: 28px;
+        color: var(--light-purple);
+        font-size: 34px;
         font-weight: 500;
         margin-bottom: 40px;
       }
-      .about-para{
-        /* border: 2px solid green; */
+      .about-para {
         width: 60%;
-        font-size: 17px;
-        line-height: 25px;
-        color: var(--gray); 
+        font-size: 15px;
+        line-height: 26px;
+        color: var(--gray);
       }
-
-      .about-para>a{
+      .about-para > a {
         text-decoration: none;
         color: white;
-        /* font-weight: bold; */
       }
-
-      .about-para>a:hover{
+      .about-para > a:hover {
         color: var(--light-purple);
         transition: color 0.2s ease-in-out;
       }
-      .about-img{
+      .about-img {
         border: 2px solid var(--light-purple);
         width: 300px;
         height: 300px;
         border-radius: 10%;
       }
-      .exp-list{
+      .exp-list {
         display: inline-flex;
         position: relative;
         top: 20px;
@@ -205,32 +263,120 @@
         flex-wrap: wrap;
         column-gap: 40px;
       }
-      .exp-list li{
-        list-style-type:disc;
+      .exp-list li {
+        list-style-type: disc;
         font-size: 15px;
-        
+      }
+
+      .about-img {
+        width: 300px;
+        height: 300px;
+        border-radius: 10%;
+        border: 2px solid var(--light-purple);
+        object-fit: cover;
+        object-position: center;
+        flex-shrink: 0;
       }
 
 
-      #projects {
-        position: relative;
-        height: 400px;
-        top: 50px;
-        display: flex;
-        flex-direction: column;
-        margin: 0px 150px;
 
-      }
-      .projects-container{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-      }
-      .projects-heading {
-        font-size: 28px;
-        font-weight: 500;
-        margin-bottom: 40px;
-      }
+      
+      /* ── PROJECTS ── */
+#projects {
+  position: relative;
+  top: 50px;
+  display: flex;
+  flex-direction: column;
+  margin: 0px 150px;
+  margin-bottom: 100px;
+}
+
+.projects-heading {
+  color: var(--light-purple);
+  font-size: 34px;
+  font-weight: 500;
+  margin-bottom: 40px;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.project-card {
+  background: #0a0a2e;
+  border: 1px solid rgba(164, 93, 231, 0.25);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+  cursor: default;
+  height: 300px;
+}
+
+.project-card:hover {
+  border-color: rgba(164, 93, 231, 0.7);
+  transform: translateY(-4px);
+}
+
+.project-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  min-height: 80px;
+  align-items: flex-start;
+}
+
+.project-title {
+  font-size: 17px;
+  font-weight: 500;
+  color: white;
+  line-height: 1.4;
+  flex: 1;
+  padding-right: 12px;
+}
+
+.project-github {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 18px;
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: color 0.2s ease;
+}
+
+.project-github:hover {
+  color: var(--light-purple);
+}
+
+.project-summary {
+  font-size: 13px;
+  font-weight: 300;
+  margin-top:16px;
+  color: var(--gray);
+  line-height: 1.7;
+  flex: 1;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 4px;
+}
+
+.project-tag {
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 100px;
+  background: rgba(164, 93, 231, 0.1);
+  border: 1px solid rgba(164, 93, 231, 0.3);
+  color: #d4a8f7;
+  font-weight: 400;
+}
     </style>
   </head>
   <body>
@@ -244,6 +390,7 @@
           <li><a href="#about">about</a></li>
           <li><a href="#experience">experience</a></li>
           <li><a href="#projects">projects</a></li>
+          <li><a href="#blog">blog</a></li>
         </ul>
       </nav>
       <div class="left-nav">
@@ -255,7 +402,6 @@
           >
             <i class="fa-brands fa-github"></i>
           </a>
-
           <a
             href="https://instagram.com/mahimaparekh10"
             target="_blank"
@@ -263,7 +409,6 @@
           >
             <i class="fa-brands fa-instagram"></i>
           </a>
-
           <a
             href="https://linkedin.com/in/yourusername"
             target="_blank"
@@ -271,7 +416,6 @@
           >
             <i class="fa-brands fa-linkedin"></i>
           </a>
-
           <a href="mailto:mahima98parekh@gmail.com" aria-label="Email">
             <i class="fa-regular fa-envelope"></i>
           </a>
@@ -279,23 +423,38 @@
       </div>
     </header>
 
-    <canvas id="network"></canvas>
     <section id="home">
       <div class="home-box">
-        <div class="intro">
-          <span id="element"></span>
+        <div class="intro"><span id="element"></span></div>
+        <div class="tag1">full-time coder, part-time overthinker.</div>
+        <div class="tag2">
+          I enjoy building intelligent systems, experimenting with new ideas,
+          and creating things that are both useful and a little unconventional.
         </div>
-        <div class="tag">part-time coder, full-time overthinker.</div>
+
+        <a href="mailto:mahima98parekh@gmail.com" class="connect-btn">
+  <i class="fa-regular fa-envelope"></i>
+  <span>Let's Connect</span>
+</a>
+      </div>
+
+      <div class="sphere-wrap">
+        <canvas id="network"></canvas>
       </div>
     </section>
 
     <section id="about">
-      <div class="about-heading">> about me</div>
+      <div class="about-heading"> &lt; about me &gt; </about_me></div>
       <div class="about-container">
         <div class="about-para">
-          I’m currently a Master's student in Computer Science and Engineering at
-          <a href="https://ahduni.edu.in/" target="_blank">Ahmedabad University</a> specializing in Artificial Intelligence and Machine Learning. <br> <br>
-          I have experience working with: <br>
+          I'm currently a Master's student in Computer Science and Engineering
+          at
+          <a href="https://ahduni.edu.in/" target="_blank"
+            >Ahmedabad University</a
+          >
+          specializing in Artificial Intelligence and Machine Learning.
+          <br /><br />
+          I have experience working with: <br />
           <ul class="exp-list">
             <li>HTML</li>
             <li>CSS</li>
@@ -303,30 +462,130 @@
             <li>Node.js</li>
             <li>Python</li>
             <li>Java</li>
+            <li>MSSQL</li>
+            <li>Numpy</li>
+            <li>Pandas</li>
+            <li>PyTorch</li>
+            <li>OpenCV</li>
+            <li>Git</li>
+            <li>Tableau</li>
+            <li>PowerBI</li>
           </ul>
-          <br><br>
+          <br /><br />
           <p>
-            Beyond academics and code, I enjoy reading a good book, sketching ideas and staying current with tech.
+            Beyond academics and code, I enjoy reading a good book, sketching
+            ideas and staying current with tech.
           </p>
         </div>
-        <div class="about-img"></div>
+        <img class="about-img" src="/linkedin.png" alt="Mahima Parekh" />
       </div>
-
     </section>
+
+
 
     <section id="projects">
-      <div class="projects-heading">> projects</div>
-      <div class="projects-container"></div>
-    </section>
+  <div class="projects-heading">&lt; projects &gt;</div>
+  <div class="projects-grid">
+
+    <!-- Card 1 -->
+    <div class="project-card">
+      <div class="project-card-top">
+        <div class="project-title">Classical ML Multi-Object Tracker [UAV Videos]</div>
+        <a href="https://github.com/Aagam41/ML_2026_5_Epochalypse.git" target="_blank" class="project-github" aria-label="GitHub">
+          <i class="fa-brands fa-github"></i>
+        </a>
+      </div>
+      <div class="project-summary">
+        Developed a traditional ML-based re-identification pipeline for multi-object tracking using handcrafted features.
+      </div>
+      <div class="project-tags">
+        <span class="project-tag">OpenCV</span>
+        <span class="project-tag">Random Forest</span>
+        <span class="project-tag">SIFT</span>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="project-card">
+      <div class="project-card-top">
+        <div class="project-title">Deep Learning Tracker for Small Object Detection [UAV Videos]</div>
+        <a href="https://github.com/Aagam41/CV_2026_7_TheConvolutioners.git" target="_blank" class="project-github" aria-label="GitHub">
+          <i class="fa-brands fa-github"></i>
+        </a>
+      </div>
+      <div class="project-summary">
+        Designed a deep learning pipeline combining SAHI tiling strategy, and a Siamese Re-ID Network for small object tracking in UAV footage.
+      </div>
+      <div class="project-tags">
+        <span class="project-tag">SAHI</span>
+        <span class="project-tag">Siamese Network</span>
+        <span class="project-tag">BoT-SORT</span>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="project-card">
+      <div class="project-card-top">
+        <div class="project-title">Fluorescence Microscopy Image Denoising</div>
+        <a href="#" target="_blank" class="project-github" aria-label="GitHub">
+          <i class="fa-brands fa-github"></i>
+        </a>
+      </div>
+      <div class="project-summary">
+        Self-supervised deep learning pipeline using UNet and Noise2Noise to denoise calcium imaging videos as part of the AI4Life Calcium Imaging Denoising Challenge 2025.
+      </div>
+      <div class="project-tags">
+        <span class="project-tag">UNet</span>
+        <span class="project-tag">Noise2Noise</span>
+        <span class="project-tag">scikit-image</span>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="project-card">
+      <div class="project-card-top">
+        <div class="project-title">Document Intelligence with LayoutLMv3 and RoBERTa</div>
+        <a href="#" target="_blank" class="project-github" aria-label="GitHub">
+          <i class="fa-brands fa-github"></i>
+        </a>
+      </div>
+      <div class="project-summary">
+        A Comprehensive Analysis of LayoutLMv3 and RoBERTa for Classification and Key Information Extraction Fine-Tuned on the DocILE Dataset.
+      </div>
+      <div class="project-tags">
+        <span class="project-tag">LayoutLMv3</span>
+        <span class="project-tag">RoBERTa</span>
+        <span class="project-tag">NLP</span>
+        <span class="project-tag">DocAI</span>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="project-card">
+      <div class="project-card-top">
+        <div class="project-title">Planetary Exploration Rover</div>
+        <a href="#" target="_blank" class="project-github" aria-label="GitHub">
+          <i class="fa-brands fa-github"></i>
+        </a>
+      </div>
+      <div class="project-summary">
+        Designed a reactive-deliberative Mars rover agent that combines reflex-based battery monitoring with A* search for optimal route planning evaluated on multiple heuristics.
+      </div>
+      <div class="project-tags">
+        <span class="project-tag">A* Search</span>
+        <span class="project-tag">Heuristic Design</span>
+        <span class="project-tag">Agent Modelling</span>
+      </div>
+    </div>
+
+  </div>
+</section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
 
-    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
-
-    <!-- Setup and start animation! -->
     <script>
+      /* ── Typed.js intro ── */
       var typed = new Typed("#element", {
         strings: ["hi, it's <span class='purple'>mahima.</span>"],
         typeSpeed: 50,
@@ -334,36 +593,71 @@
         cursorChar: '<span class="purple-cursor">|</span>',
       });
 
+      /* ── Neural network sphere ── */
       const canvas = document.getElementById("network");
       const ctx = canvas.getContext("2d");
+      const SIZE = 380;
+      canvas.width = SIZE;
+      canvas.height = SIZE;
 
-      let width, height;
-      function resize() {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
-      }
-      window.addEventListener("resize", resize);
-      resize();
+      const CX = SIZE / 2;
+      const CY = SIZE / 2;
+      const R = SIZE / 2;
 
-      // code for the live network
+      /* mouse position relative to the canvas centre */
+      let mouse = { x: null, y: null };
+      const MOUSE_RADIUS = 100; /* how far nodes feel the pull */
+      const MOUSE_STRENGTH = 0.012; /* how hard they're pushed */
+
+      canvas.addEventListener("mousemove", (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+      });
+
+      canvas.addEventListener("mouseleave", () => {
+        mouse.x = null;
+        mouse.y = null;
+      });
+
+      /* nodes */
+      const NODE_COUNT = 100;
+      const MAX_DISTANCE = 110;
 
       const nodes = [];
-      const NODE_COUNT = 100;
-      const MAX_DISTANCE = 120;
-
       for (let i = 0; i < NODE_COUNT; i++) {
+        /* place inside the circle */
+        let x, y;
+        do {
+          x = Math.random() * SIZE;
+          y = Math.random() * SIZE;
+        } while ((x - CX) ** 2 + (y - CY) ** 2 > R * R);
+
         nodes.push({
-          x: Math.random() * width,
-          y: Math.random() * height,
-          vx: (Math.random() - 0.5) * 0.4,
-          vy: (Math.random() - 0.5) * 0.4,
+          x,
+          y,
+          vx: (Math.random() - 0.5) * 0.45,
+          vy: (Math.random() - 0.5) * 0.45,
+          /* base velocity for restoring drift */
+          bvx: 0,
+          bvy: 0,
         });
       }
 
       function draw() {
-        ctx.clearRect(0, 0, width, height);
+        ctx.clearRect(0, 0, SIZE, SIZE);
 
-        // Draw connections
+        /* clip everything to the circle */
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(CX, CY, R, 0, Math.PI * 2);
+        ctx.clip();
+
+        /* dark background fill inside the sphere */
+        ctx.fillStyle = "#000021";
+        ctx.fillRect(0, 0, SIZE, SIZE);
+
+        /* connections */
         for (let i = 0; i < nodes.length; i++) {
           for (let j = i + 1; j < nodes.length; j++) {
             const dx = nodes[i].x - nodes[j].x;
@@ -371,9 +665,7 @@
             const dist = Math.sqrt(dx * dx + dy * dy);
 
             if (dist < MAX_DISTANCE) {
-              ctx.strokeStyle = `rgba(164, 93, 231, ${
-                1 - dist / MAX_DISTANCE
-              })`;
+              ctx.strokeStyle = `rgba(164, 93, 231, ${1 - dist / MAX_DISTANCE})`;
               ctx.lineWidth = 0.7;
               ctx.beginPath();
               ctx.moveTo(nodes[i].x, nodes[i].y);
@@ -383,20 +675,60 @@
           }
         }
 
-        // Draw nodes
+        /* nodes + physics */
         for (const node of nodes) {
-          ctx.fillStyle = "#ffffff";
-          ctx.beginPath();
-          ctx.arc(node.x, node.y, 2, 0, Math.PI * 2);
-          ctx.fill();
+          /* mouse repulsion */
+          if (mouse.x !== null) {
+            const mdx = node.x - mouse.x;
+            const mdy = node.y - mouse.y;
+            const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+
+            if (mdist < MOUSE_RADIUS && mdist > 0) {
+              const force = (1 - mdist / MOUSE_RADIUS) * MOUSE_STRENGTH * 60;
+              node.vx += (mdx / mdist) * force;
+              node.vy += (mdy / mdist) * force;
+            }
+          }
+
+          /* soft damping so nodes don't fly off forever */
+          node.vx *= 0.985;
+          node.vy *= 0.985;
+
+          /* minimum drift so they never fully stop */
+          const speed = Math.sqrt(node.vx * node.vx + node.vy * node.vy);
+          if (speed < 0.15) {
+            node.vx += (Math.random() - 0.5) * 0.04;
+            node.vy += (Math.random() - 0.5) * 0.04;
+          }
 
           node.x += node.vx;
           node.y += node.vy;
 
-          if (node.x < 0 || node.x > width) node.vx *= -1;
-          if (node.y < 0 || node.y > height) node.vy *= -1;
+          /* bounce off the circular boundary */
+          const nx = node.x - CX;
+          const ny = node.y - CY;
+          const nd = Math.sqrt(nx * nx + ny * ny);
+
+          if (nd > R - 2) {
+            /* reflect velocity along the normal */
+            const nnx = nx / nd;
+            const nny = ny / nd;
+            const dot = node.vx * nnx + node.vy * nny;
+            node.vx -= 2 * dot * nnx;
+            node.vy -= 2 * dot * nny;
+            /* push node back inside */
+            node.x = CX + nnx * (R - 2);
+            node.y = CY + nny * (R - 2);
+          }
+
+          /* draw dot */
+          ctx.fillStyle = "#ffffff";
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, 2, 0, Math.PI * 2);
+          ctx.fill();
         }
 
+        ctx.restore();
         requestAnimationFrame(draw);
       }
 
