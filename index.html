@@ -121,6 +121,32 @@
         transition: color 0.2s ease-in-out;
       }
 
+      /* ── HAMBURGER ── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 1100;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: white;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* X state when open */
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
       /* ── HOME SECTION ── */
       #home {
         position: relative;
@@ -287,6 +313,7 @@
         height: 30%;
         flex-wrap: wrap;
         column-gap: 40px;
+        
       }
       .exp-list li {
         list-style-type: disc;
@@ -538,19 +565,6 @@
   line-height: 1.4;
 }
 
-.cert-date {
-  font-size: 13px;
-  font-weight: 300;
-  color: var(--gray);
-  opacity: 0.7;
-}
-
-.cert-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 4px;
-}
 
 .cert-tag {
   font-size: 11px;
@@ -612,52 +626,222 @@ footer {
   color: rgba(164, 93, 231, 0.4);
   font-size: 14px;
 }
+
+/* ── RESPONSIVE ── */
+
+/* Large laptops */
+@media (max-width: 1200px) {
+  #home        { padding: 0 80px; }
+  .tag2        { margin-right: 60px; }
+  #about, #experience, #projects, #certifications { margin-left: 80px; margin-right: 80px; }
+  .section-divider { margin: 0 80px; }
+}
+
+/* Tablets landscape */
+@media (max-width: 1024px) {
+  #home        { padding: 0 50px; height: auto; padding-top: 50px; padding-bottom: 50px; }
+  .tag2        { margin-right: 0; }
+  .intro       { font-size: 40px; }
+  .tag1        { font-size: 20px; }
+  .sphere-wrap, #network { width: 220px; height: 220px; }
+  #about, #experience, #projects, #certifications { margin-left: 50px; margin-right: 50px; }
+  .section-divider { margin: 0 50px; }
+  .about-para  { width: 65%; }
+  .about-img   { width: 240px; height: 240px; }
+}
+
+/* Tablets portrait + mobile */
+@media (max-width: 768px) {
+
+  /* HEADER */
+  header {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 12px 20px;
+    gap: 10px;
+  }
+  .logo a       { margin-left: 0; font-size: 18px; }
+  .navbar       { left: 0; width: 100%; order: 3; }
+  .navbar ul    { justify-content: center; flex-wrap: wrap; gap: 8px 14px; }
+  .navbar a     { font-size: 13px; }
+  .social-icons { gap: 14px; }
+  .social-icons a { font-size: 16px; }
+  /* hamburger visible, social icons hidden, navbar hidden by default */
+.hamburger  { display: flex; }
+.left-nav   { display: none; }
+
+.navbar {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: var(--dark-purple);
+  z-index: 1050;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar.open {
+  display: flex;
+}
+
+.navbar ul {
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.navbar a {
+  font-size: 22px;
+  font-weight: 400;
+}
+
+/* keep logo and hamburger on top of the open menu */
+.logo  { z-index: 1100; }
+
+  /* HOME — sphere on top, text below */
+  #home {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 36px 24px 50px;
+    height: auto;
+    margin-top: 24px;
+    margin-bottom: 60px;
+    gap: 24px;
+  }
+
+  /* move sphere before text */
+  .sphere-wrap { order: -1; width: 180px; height: 180px; }
+  #network     { width: 180px; height: 180px; }
+
+  .home-box    { align-items: center; }
+  .intro       { font-size: 34px; }
+  .tag1        { font-size: 17px; }
+  .tag2        { font-size: 14px; margin-right: 0; }
+  .connect-btn { align-self: center; font-size: 14px; padding: 10px 18px; }
+
+  /* SECTION DIVIDER */
+  .section-divider { margin: 0 24px; margin-bottom: 40px; }
+
+  /* ABOUT — hide photo, stack text only */
+  #about {
+    margin: 0 24px;
+    margin-bottom: 60px;
+    height: auto;
+  }
+  .about-heading { font-size: 26px; margin-bottom: 24px; }
+  .about-container { flex-direction: column; }
+  .about-img   { display: none; }
+  .about-para  { width: 100%; font-size: 14px; line-height: 22px; }
+  .exp-list    { left: 16px; width: 100%; column-gap: 20px; }
+
+  /* EXPERIENCE */
+  #experience  { margin: 0 24px; margin-bottom: 60px; }
+  .exp-heading { font-size: 26px; }
+  .exp-body    { padding: 24px 20px; }
+  .exp-text    { font-size: 14px; }
+  .exp-list {
+      left: 0;
+      width: 100%;
+      column-gap: 30px;
+      column-count: 3;
+      display: block;
+      margin-left: 20px;
+      
+    }
+
+  /* PROJECTS — single column stack */
+  #projects    { margin: 0 24px; margin-bottom: 60px; top: 0; }
+  .projects-heading { font-size: 26px; }
+  .projects-grid { grid-template-columns: 1fr; gap: 16px; }
+  .project-card { height: auto; }
+  .project-title   { font-size: 15px; }
+  .project-summary { font-size: 12px; }
+
+  /* CERTIFICATIONS */
+  #certifications { margin: 0 24px; margin-bottom: 60px; }
+  .cert-heading   { font-size: 26px; }
+  .cert-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+  }
+  .cert-title  { font-size: 15px; }
+  .cert-link   { align-self: flex-start; }
+
+  /* FOOTER */
+  footer {
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+    padding: 24px 20px;
+  }
+  .footer-divider { display: none; }
+}
+
+/* Mobile small */
+@media (max-width: 480px) {
+  .intro  { font-size: 28px; }
+  .tag1   { font-size: 15px; }
+  .sphere-wrap, #network { width: 150px; height: 150px; }
+
+  #about, #experience, #projects, #certifications { margin-left: 16px; margin-right: 16px; }
+  .section-divider { margin: 0 16px; }
+
+  .exp-body { padding: 20px 16px; }
+  .exp-list {
+  column-count: 2;
+  column-gap: 20px;
+  display: block;
+}
+  .navbar a { font-size: 12px; }
+}
     </style>
   </head>
   <body>
     <header>
-      <div class="logo">
-        <a href="/Mahima/index.html">mahima.</a>
-      </div>
-      <nav class="navbar">
-        <ul>
-          <li><a href="#home">home</a></li>
-          <li><a href="#about">about</a></li>
-          <li><a href="#experience">experience</a></li>
-          <li><a href="#projects">projects</a></li>
-          <li><a href="#certifications">certifications</a></li>
-          <!-- <li><a href="#blog">blog</a></li> -->
-        </ul>
-      </nav>
-      <div class="left-nav">
-        <div class="social-icons">
-          <a
-            href="https://github.com/mahimaparekh"
-            target="_blank"
-            aria-label="GitHub"
-          >
-            <i class="fa-brands fa-github"></i>
-          </a>
-          <a
-            href="https://instagram.com/mahimaparekh10"
-            target="_blank"
-            aria-label="Instagram"
-          >
-            <i class="fa-brands fa-instagram"></i>
-          </a>
-          <a
-            href="https://linkedin.com/in/yourusername"
-            target="_blank"
-            aria-label="LinkedIn"
-          >
-            <i class="fa-brands fa-linkedin"></i>
-          </a>
-          <a href="mailto:mahima98parekh@gmail.com" aria-label="Email">
-            <i class="fa-regular fa-envelope"></i>
-          </a>
-        </div>
-      </div>
-    </header>
+  <div class="logo">
+    <a href="/Mahima/index.html">mahima.</a>
+  </div>
+
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <nav class="navbar" id="navbar">
+    <ul>
+      <li><a href="#home" class="nav-link">home</a></li>
+      <li><a href="#about" class="nav-link">about</a></li>
+      <li><a href="#experience" class="nav-link">experience</a></li>
+      <li><a href="#projects" class="nav-link">projects</a></li>
+      <li><a href="#certifications" class="nav-link">certifications</a></li>
+    </ul>
+  </nav>
+
+  <div class="left-nav">
+    <div class="social-icons">
+      <a href="https://github.com/mahimaparekh" target="_blank" aria-label="GitHub">
+        <i class="fa-brands fa-github"></i>
+      </a>
+      <a href="https://instagram.com/mahimaparekh10" target="_blank" aria-label="Instagram">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a href="https://linkedin.com/in/mahimaparekh" target="_blank" aria-label="LinkedIn">
+        <i class="fa-brands fa-linkedin"></i>
+      </a>
+      <a href="mailto:mahima98parekh@gmail.com" aria-label="Email">
+        <i class="fa-regular fa-envelope"></i>
+      </a>
+    </div>
+  </div>
+</header>
 
     <section id="home">
       <div class="home-box">
@@ -855,15 +1039,7 @@ footer {
           <i class="fa-brands fa-google"></i>
           Google
         </div>
-        <div class="cert-title">Google Data Analytics<br/>Professional Certificate</div>
-        <div class="cert-date">Jan 2025 — Mar 2025</div>
-        <div class="cert-tags">
-          <span class="cert-tag">SQL</span>
-          <span class="cert-tag">Tableau</span>
-          <span class="cert-tag">R</span>
-          <span class="cert-tag">Data Cleaning</span>
-          <span class="cert-tag">BigQuery</span>
-        </div>
+        <div class="cert-title">Google Data Analytics Professional Certificate</div>
       </div>
       <a href="https://www.coursera.org/account/accomplishments/professional-cert/GCQNFCK33GN6" target="_blank" class="cert-link">
         view credential <i class="fa-solid fa-arrow-up-right-from-square"></i>
@@ -995,6 +1171,25 @@ footer {
         requestAnimationFrame(draw);
       }
       draw();
+
+      /* ── Hamburger menu ── */
+const hamburger = document.getElementById('hamburger');
+const navbar    = document.getElementById('navbar');
+
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  navbar.classList.toggle('open');
+  document.body.style.overflow = navbar.classList.contains('open') ? 'hidden' : '';
+});
+
+// close menu when a link is clicked
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    navbar.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+});
 
       /* ── Project cards fade in on scroll ── */
 const projectCards = document.querySelectorAll('.project-card');
