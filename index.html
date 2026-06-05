@@ -24,6 +24,8 @@
         --purple: #12123e;
         --light-purple: rgb(164, 93, 231);
         --gray: rgb(206, 200, 200);
+        --purple-line: rgba(164, 93, 231, 0.22);
+        
       }
       * {
         margin: 0px;
@@ -46,18 +48,18 @@
       }
 
       /* dot-grid */
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: radial-gradient(
-    rgba(164,93,231,0.12) 1px,
-    transparent 1px
-  );
-  background-size: 36px 36px;
-  pointer-events: none;
-  z-index: 0;
-}
+      /* body::after {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background-image: radial-gradient(
+          rgba(164,93,231,0.12) 1px,
+          transparent 1px
+        );
+        background-size: 36px 36px;
+        pointer-events: none;
+        z-index: 0;
+      } */
 
       header {
         display: flex;
@@ -82,6 +84,7 @@ body::after {
         text-decoration: none;
         color: white;
         padding: 3px;
+        margin-left: -20px;;
       }
 
       .navbar ul {
@@ -217,13 +220,21 @@ body::after {
         position: absolute;
         top: 0;
         left: 0;
-        width: 300px;
-        height: 300px;
+        width: 340px;
+        height: 340px;
         border-radius: 50%;
         cursor: crosshair;
-        /* box-shadow:
-          0 0 0 1.5px rgba(164, 93, 231, 0.1),
-          0 0 18px rgba(164, 93, 231, 0.05); */
+      }
+
+      /* divider between sections */
+      .section-divider {
+        height: 1px;
+        background: var(--purple-line);
+        margin: 0 80px;
+        position: relative;
+        z-index: 1;
+        margin-bottom: 50px;
+
       }
 
       /* ── ABOUT ── */
@@ -291,6 +302,80 @@ body::after {
         object-position: center;
         flex-shrink: 0;
       }
+
+      /* ── EXPERIENCE ── */
+#experience {
+  margin: 0 150px;
+  margin-bottom: 100px;
+}
+
+.exp-heading {
+  color: var(--light-purple);
+  font-size: 34px;
+  font-weight: 500;
+  margin-bottom: 40px;
+}
+
+.exp-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 36px 40px;
+  border: 1px dashed rgba(164, 93, 231, 0.3);
+  border-radius: 16px;
+  background: rgba(164, 93, 231, 0.03);
+  max-width: 100%;
+  text-align: center;
+}
+
+.exp-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--light-purple);
+  justify-content: center;
+}
+
+
+
+@keyframes pulse {
+  0%, 100% { opacity: 1;   transform: scale(1);   }
+  50%       { opacity: 0.4; transxform: scale(1.5); }
+}
+
+.exp-text {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--gray);
+  line-height: 1.85;
+}
+
+.exp-highlight {
+  color: white;
+  font-weight: 400;
+}
+
+.exp-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 4px;
+  justify-content: center;
+}
+
+.exp-tag {
+  font-size: 12px;
+  padding: 5px 14px;
+  border-radius: 100px;
+  border: 1px solid rgba(164, 93, 231, 0.35);
+  color: rgba(164, 93, 231, 0.85);
+  font-weight: 400;
+  letter-spacing: 0.03em;
+}
 
 
 
@@ -404,6 +489,7 @@ body::after {
           <li><a href="#about">about</a></li>
           <li><a href="#experience">experience</a></li>
           <li><a href="#projects">projects</a></li>
+          <li><a href="#certifications">certifications</a></li>
           <li><a href="#blog">blog</a></li>
         </ul>
       </nav>
@@ -457,6 +543,9 @@ body::after {
       </div>
     </section>
 
+    <div class="section-divider"></div>
+
+
     <section id="about">
       <div class="about-heading"> &lt; about me &gt; </about_me></div>
       <div class="about-container">
@@ -495,6 +584,29 @@ body::after {
       </div>
     </section>
 
+    <div class="section-divider"></div>
+
+
+<section id="experience">
+  <div class="exp-heading">&lt; experience &gt;</div>
+  <div class="exp-body">
+    <div class="exp-status">
+      currently building
+    </div>
+    <p class="exp-text">
+      Right now I'm focused on compounding skills, shipping ambitious projects,
+      and becoming the kind of engineer who solves difficult problems.
+      <span class="exp-highlight">Internships, research and bigger things ahead.</span>
+    </p>
+    <div class="exp-tags">
+      <span class="exp-tag">open to internships</span>
+      <span class="exp-tag">open to research</span>
+      <span class="exp-tag">open to opportunities</span>
+    </div>
+  </div>
+</section>
+
+    <div class="section-divider"></div>
 
 
     <section id="projects">
@@ -607,80 +719,61 @@ body::after {
         cursorChar: '<span class="purple-cursor">|</span>',
       });
 
-      /* ── Neural network sphere ── */
+      /* Neural network sphere */
       const canvas = document.getElementById("network");
       const ctx = canvas.getContext("2d");
-      const SIZE = 380;
+      const SIZE = 340;
       canvas.width = SIZE;
       canvas.height = SIZE;
+      const CX = SIZE / 2,
+        CY = SIZE / 2,
+        R = SIZE / 2;
 
-      const CX = SIZE / 2;
-      const CY = SIZE / 2;
-      const R = SIZE / 2;
-
-      /* mouse position relative to the canvas centre */
       let mouse = { x: null, y: null };
-      const MOUSE_RADIUS = 100; /* how far nodes feel the pull */
-      const MOUSE_STRENGTH = 0.012; /* how hard they're pushed */
-
       canvas.addEventListener("mousemove", (e) => {
-        const rect = canvas.getBoundingClientRect();
-        mouse.x = e.clientX - rect.left;
-        mouse.y = e.clientY - rect.top;
+        const r = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - r.left;
+        mouse.y = e.clientY - r.top;
       });
-
       canvas.addEventListener("mouseleave", () => {
         mouse.x = null;
         mouse.y = null;
       });
 
-      /* nodes */
-      const NODE_COUNT = 100;
-      const MAX_DISTANCE = 110;
-
+      const NODE_COUNT = 90,
+        MAX_DIST = 105;
       const nodes = [];
       for (let i = 0; i < NODE_COUNT; i++) {
-        /* place inside the circle */
         let x, y;
         do {
           x = Math.random() * SIZE;
           y = Math.random() * SIZE;
         } while ((x - CX) ** 2 + (y - CY) ** 2 > R * R);
-
         nodes.push({
           x,
           y,
-          vx: (Math.random() - 0.5) * 0.45,
-          vy: (Math.random() - 0.5) * 0.45,
-          /* base velocity for restoring drift */
-          bvx: 0,
-          bvy: 0,
+          vx: (Math.random() - 0.5) * 0.4,
+          vy: (Math.random() - 0.5) * 0.4,
         });
       }
 
       function draw() {
         ctx.clearRect(0, 0, SIZE, SIZE);
-
-        /* clip everything to the circle */
         ctx.save();
         ctx.beginPath();
         ctx.arc(CX, CY, R, 0, Math.PI * 2);
         ctx.clip();
-
-        /* dark background fill inside the sphere */
         ctx.fillStyle = "#000021";
         ctx.fillRect(0, 0, SIZE, SIZE);
 
-        /* connections */
         for (let i = 0; i < nodes.length; i++) {
           for (let j = i + 1; j < nodes.length; j++) {
-            const dx = nodes[i].x - nodes[j].x;
-            const dy = nodes[i].y - nodes[j].y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-
-            if (dist < MAX_DISTANCE) {
-              ctx.strokeStyle = `rgba(164, 93, 231, ${1 - dist / MAX_DISTANCE})`;
-              ctx.lineWidth = 0.7;
+            const dx = nodes[i].x - nodes[j].x,
+              dy = nodes[i].y - nodes[j].y;
+            const d = Math.sqrt(dx * dx + dy * dy);
+            if (d < MAX_DIST) {
+              ctx.strokeStyle = `rgba(164,93,231,${(1 - d / MAX_DIST) * 0.82})`;
+              ctx.lineWidth = 0.6;
               ctx.beginPath();
               ctx.moveTo(nodes[i].x, nodes[i].y);
               ctx.lineTo(nodes[j].x, nodes[j].y);
@@ -689,63 +782,46 @@ body::after {
           }
         }
 
-        /* nodes + physics */
-        for (const node of nodes) {
-          /* mouse repulsion */
+        for (const n of nodes) {
           if (mouse.x !== null) {
-            const mdx = node.x - mouse.x;
-            const mdy = node.y - mouse.y;
-            const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
-
-            if (mdist < MOUSE_RADIUS && mdist > 0) {
-              const force = (1 - mdist / MOUSE_RADIUS) * MOUSE_STRENGTH * 60;
-              node.vx += (mdx / mdist) * force;
-              node.vy += (mdy / mdist) * force;
+            const mdx = n.x - mouse.x,
+              mdy = n.y - mouse.y;
+            const md = Math.sqrt(mdx * mdx + mdy * mdy);
+            if (md < 110 && md > 0) {
+              const f = (1 - md / 110) * 0.75;
+              n.vx += (mdx / md) * f;
+              n.vy += (mdy / md) * f;
             }
           }
-
-          /* soft damping so nodes don't fly off forever */
-          node.vx *= 0.985;
-          node.vy *= 0.985;
-
-          /* minimum drift so they never fully stop */
-          const speed = Math.sqrt(node.vx * node.vx + node.vy * node.vy);
-          if (speed < 0.15) {
-            node.vx += (Math.random() - 0.5) * 0.04;
-            node.vy += (Math.random() - 0.5) * 0.04;
+          n.vx *= 0.984;
+          n.vy *= 0.984;
+          const sp = Math.sqrt(n.vx * n.vx + n.vy * n.vy);
+          if (sp < 0.12) {
+            n.vx += (Math.random() - 0.5) * 0.04;
+            n.vy += (Math.random() - 0.5) * 0.04;
           }
-
-          node.x += node.vx;
-          node.y += node.vy;
-
-          /* bounce off the circular boundary */
-          const nx = node.x - CX;
-          const ny = node.y - CY;
-          const nd = Math.sqrt(nx * nx + ny * ny);
-
+          n.x += n.vx;
+          n.y += n.vy;
+          const nx = n.x - CX,
+            ny = n.y - CY,
+            nd = Math.sqrt(nx * nx + ny * ny);
           if (nd > R - 2) {
-            /* reflect velocity along the normal */
-            const nnx = nx / nd;
-            const nny = ny / nd;
-            const dot = node.vx * nnx + node.vy * nny;
-            node.vx -= 2 * dot * nnx;
-            node.vy -= 2 * dot * nny;
-            /* push node back inside */
-            node.x = CX + nnx * (R - 2);
-            node.y = CY + nny * (R - 2);
+            const nnx = nx / nd,
+              nny = ny / nd,
+              dot = n.vx * nnx + n.vy * nny;
+            n.vx -= 2 * dot * nnx;
+            n.vy -= 2 * dot * nny;
+            n.x = CX + nnx * (R - 2);
+            n.y = CY + nny * (R - 2);
           }
-
-          /* draw dot */
-          ctx.fillStyle = "#ffffff";
+          ctx.fillStyle = "rgba(255,255,255,0.85)";
           ctx.beginPath();
-          ctx.arc(node.x, node.y, 2, 0, Math.PI * 2);
+          ctx.arc(n.x, n.y, 1.8, 0, Math.PI * 2);
           ctx.fill();
         }
-
         ctx.restore();
         requestAnimationFrame(draw);
       }
-
       draw();
     </script>
   </body>
