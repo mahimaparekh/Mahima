@@ -805,6 +805,7 @@ footer {
   .section-divider {
     margin: 0 24px;
     margin-bottom: 40px;
+    visibility: hidden;
   }
 
   /* ABOUT — hide photo, stack text only */
