@@ -45,6 +45,20 @@
         scroll-behavior: smooth;
       }
 
+      /* dot-grid */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(
+    rgba(164,93,231,0.12) 1px,
+    transparent 1px
+  );
+  background-size: 36px 36px;
+  pointer-events: none;
+  z-index: 0;
+}
+
       header {
         display: flex;
         position: sticky;
