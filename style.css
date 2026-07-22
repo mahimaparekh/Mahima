@@ -585,6 +585,12 @@ header {
   text-decoration: none;
 }
 
+.cert-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
 .cert-link:hover {
   color: var(--light-purple);
   border-color: var(--light-purple);
